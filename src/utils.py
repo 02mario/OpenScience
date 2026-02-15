@@ -62,7 +62,7 @@ def visualize_figures_per_article(figure_counts, paper_ids):
     return fig
 
 
-def show_paper_links(paper_ids, paper_links):
+def show_paper_links(paper_links, paper_ids,):
     """
     Creates a simple table figure showing papers and their links.
     
@@ -115,7 +115,7 @@ def show_paper_links(paper_ids, paper_links):
     plt.tight_layout()
     return fig
 
-def create_figures(info):
+def create_figures(info, show=False, output_dir=None):
     """
     Creates visualizations based on extracted paper information.
     
@@ -129,9 +129,24 @@ def create_figures(info):
     paper_links = [paper['links'] for paper in info]
 
     # Create visualizations
-    wordcloud_fig = draw_keyword_cloud(abstracts)
+    wordcloud_fig = draw_keyword_cloud(abstracts, paper_ids)
     figures_bar_fig = visualize_figures_per_article(figure_counts, paper_ids)
-    links_table_fig = show_paper_links(paper_ids, paper_links)
+    links_table_fig = show_paper_links(paper_links, paper_ids)
 
-    plt.show()  # Display all figures
-    return wordcloud_fig, figures_bar_fig, links_table_fig
+    if show:
+        plt.show()  # Display all figures
+
+    if output_dir:
+        # Save figures to output directory
+        for j, fig in enumerate(wordcloud_fig):
+            fig_path = f"{output_dir}/wordcloud_{paper_ids[j]}.png"
+            fig.savefig(fig_path)
+            print(f"Word cloud saved to: {fig_path}")
+        
+        bar_fig_path = f"{output_dir}/figures_bar_chart.png"
+        figures_bar_fig.savefig(bar_fig_path)
+        print(f"Figures bar chart saved to: {bar_fig_path}")
+        
+        links_fig_path = f"{output_dir}/paper_links_table.png"
+        links_table_fig.savefig(links_fig_path)
+        print(f"Paper links table saved to: {links_fig_path}")

@@ -1,7 +1,6 @@
 import os
 import urllib.request
 import ssl
-from pathlib import Path
 
 import certifi
 
@@ -13,9 +12,6 @@ def download_arxiv_papers(papers_file, output_dir):
         papers_file: Path to file containing arXiv URLs
         output_dir: Directory where PDFs will be saved
     """
-    # Create output directory if it doesn't exist
-    Path(output_dir).mkdir(parents=True, exist_ok=True)
-
     # SSL certificate problem resolved 
     ssl_context = ssl.create_default_context(cafile=certifi.where())
     
