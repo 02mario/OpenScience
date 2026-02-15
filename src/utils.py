@@ -1,37 +1,35 @@
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
-def draw_keyword_cloud(abstracts):
+def draw_keyword_cloud(abstracts, paper_ids):
     """
     Creates a word cloud from paper abstracts.
     
     Args:
         abstracts: List of abstract texts extracted from papers
+        paper_ids: List of paper identifiers
     
     Returns:
         matplotlib figure object
     """
-    combined_text = ' '.join(abstracts)
-    
-    # Create word cloud
-    wordcloud = WordCloud(
-        width=800,
-        height=400,
-        background_color='white',
-        colormap='viridis',
-        max_words=100,
-        relative_scaling=0.5,
-        min_font_size=10
-    ).generate(combined_text)
-    
-    # Create figure
-    fig, ax = plt.subplots(figsize=(12, 6))
-    ax.imshow(wordcloud, interpolation='bilinear')
-    ax.axis('off')
-    
-    plt.tight_layout()
-    
-    return fig
+    figures = []
+    for abstract, paper_id in zip(abstracts, paper_ids):
+        wordcloud = WordCloud(
+            width=800,
+            height=400,
+            background_color='white',
+            colormap='viridis',
+            max_words=100,
+            relative_scaling=0.5,
+            min_font_size=10
+        ).generate(abstract)
+        fig, ax = plt.subplots(figsize=(12, 6))
+        ax.imshow(wordcloud, interpolation='bilinear')
+        ax.axis('off')
+        ax.set_title(str(paper_id), fontsize=16, pad=20)
+        plt.tight_layout()
+        figures.append(fig)
+    return figures
 
 
 def visualize_figures_per_article(figure_counts, paper_ids):
@@ -88,7 +86,6 @@ def show_paper_links(paper_ids, paper_links):
             cell_text.append([pid, "No links"])
 
     # Create figure
-    # Estimate height: Header + Rows. ~0.3 inch per row
     fig_height = max(2, len(cell_text) * 0.4 + 1)
     fig, ax = plt.subplots(figsize=(12, fig_height))
     ax.axis('off')
@@ -117,3 +114,24 @@ def show_paper_links(paper_ids, paper_links):
     
     plt.tight_layout()
     return fig
+
+def create_figures(info):
+    """
+    Creates visualizations based on extracted paper information.
+    
+    :param info: List of dictionaries containing paper information (title, abstract, figures_count, links)
+    """
+
+    # Extract data for visualizations
+    abstracts = [paper['abstract'] for paper in info if paper['abstract']]
+    figure_counts = [paper['figures_count'] for paper in info]
+    paper_ids = [paper['paper_id'] for paper in info]
+    paper_links = [paper['links'] for paper in info]
+
+    # Create visualizations
+    wordcloud_fig = draw_keyword_cloud(abstracts)
+    figures_bar_fig = visualize_figures_per_article(figure_counts, paper_ids)
+    links_table_fig = show_paper_links(paper_ids, paper_links)
+
+    plt.show()  # Display all figures
+    return wordcloud_fig, figures_bar_fig, links_table_fig
