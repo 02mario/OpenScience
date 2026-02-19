@@ -9,7 +9,7 @@ def main():
     parser.add_argument('action', choices=['download', 'process'], help="Action to perform: 'download' to fetch papers, 'process' to analyze and visualize.")
     parser.add_argument('--dataset', type=str, default="dataset", help="Dataset directory path.")
     parser.add_argument('--output', type=str, default=None, help="Output directory for results or figures.")
-    parser.add_argument('--show', default=True, action='store_true', help="Show figures after processing.")
+    parser.add_argument('--hide', default=True, action='store_true', help="Hide figures after processing.")
     args = parser.parse_args()
 
     # Set workdir as the parent directory of the directory containing this file
@@ -30,11 +30,11 @@ def main():
     if args.action == 'download':
         paper_download.download_papers(dataset_path)
     elif args.action == 'process':
-        if args.show or output_path:
+        if not args.hide or output_path:
             results = grobid.process_dataset(dataset_path)
-            figs = utils.create_figures(results, show=args.show, output_dir=output_path)
+            figs = utils.create_figures(results, show=not args.hide, output_dir=output_path)
         else:
-            print("Warning: No output selected. Use --show to display figures or --output to save them.")
+            print("Warning: No output selected. Omit --hide or use --output to save them.")
 
 if __name__ == "__main__":
     main()
