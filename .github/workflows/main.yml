@@ -1,0 +1,9 @@
+name: Run RSFC analysis
+
+on: [push]         
+
+jobs:
+  run-rsfc-checks:
+    uses: oeg-upm/rsfc/.github/workflows/run-rsfc.yml@main
+    with:
+      repo_url: https://github.com/${{ github.repository }}
