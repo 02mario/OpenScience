@@ -1,6 +1,9 @@
 # OpenScience
 Repository for Open Science and Artificial Intelligence
 
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18723896.svg)](https://doi.org/10.5281/zenodo.18723896)
+
 ## Description
 This is a project to perform papers analysis with grobid.
 This program allows to extract info from the papers and create some visualizations to analyze the results.
