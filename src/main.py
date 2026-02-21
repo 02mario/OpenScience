@@ -4,7 +4,7 @@ import utils
 import os
 
 def main():
-    parser = argparse.ArgumentParser(description="Tool for processing pspapers with GROBID and visualizing results.")
+    parser = argparse.ArgumentParser(description="Tool for processing papers with GROBID and visualizing results.")
     parser.add_argument('--dataset', type=str, default="dataset", help="Dataset directory path.")
     parser.add_argument('--output', type=str, default=None, help="Output directory for results or figures.")
     parser.add_argument('--hide', default=True, action='store_true', help="Hide figures after processing.")

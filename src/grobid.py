@@ -65,7 +65,7 @@ def extract_paper_info(xml_content):
     refs = root.findall('.//tei:ref[@target]', ns)
     for ref in refs:
         target = ref.get('target')
-        if target and (target.startswith('http://') or target.startswith('https://')):
+        if target and (target.startswith('http://') or target.startswith('https://') and target != "https://github.com/kermitt2/grobid"):
             links.append(target)
     
     # Find all ptr elements with target attribute
