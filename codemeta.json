@@ -1,0 +1,20 @@
+{
+    "@context": "https://w3id.org/codemeta/3.0",
+    "type": "SoftwareSourceCode",
+    "codeRepository": "git+https://github.com/02mario/OpenScience",
+    "dateCreated": "2026-01-12",
+    "dateModified": "2026-02-21",
+    "datePublished": "2026-02-21",
+    "description": "This program allows to extract info from the papers and create some visualizations to analyze the results.",
+    "license": "https://spdx.org/licenses/CC0-1.0",
+    "name": "OpenScience",
+    "operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+    ],
+    "programmingLanguage": "Python 3",
+    "version": "0.1.2",
+    "issueTracker": "https://github.com/02mario/OpenScience/issues",
+    "referencePublication": "https://doi.org/10.5281/zenodo.18723896"
+}
