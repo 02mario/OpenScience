@@ -30,26 +30,26 @@ poetry install
 
 ## Execution Instructions
 First, make sure you have GROBID locally running andthe necessary files in PDF format in the `dataset/` directory.
-The application will show the results in a window by default.
+The application will save the figures in the `output/` directory by default.
 
 To run the application:
 ```sh
-poetry run python main.py
+poetry run openscience
 ```
 
 You can also specify an output directory for the figures:
 ```sh
-poetry run python main.py --output output
+poetry run openscience --output output
 ```
 
 You can also specify a custom dataset directory:
 ```sh
-poetry run python main.py --dataset my_dataset
+poetry run openscience --dataset my_dataset
 ```
 
-You can choose to hide the figures instead of showing them:
+You can choose to show the figures in addition to saving them:
 ```sh
-poetry run python main.py --hide
+poetry run openscience --show
 ```
 
 ### Test execution
@@ -62,7 +62,7 @@ poetry run python -m unittest discover -s tests -p "test_*.py"
 
 To run the application with a custom dataset and save the figures to an output directory:
 ```sh
-poetry run python main.py --dataset my_papers --output results
+poetry run openscience --dataset my_papers --output results
 ```
 
 ## Preferred Citation

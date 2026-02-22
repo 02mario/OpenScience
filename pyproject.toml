@@ -1,19 +1,22 @@
-[project]
+[tool.poetry]
 name = "openscience"
 version = "0.1.0"
 description = "Python project to perform arxiv papers analysis with grobid for Open Science course."
-authors = [
-    {name = "Mario"}
-]
-license = {text = "CC0-1.0"}
+authors = ["Mario"]
+license = "CC0-1.0"
 readme = "README.md"
-requires-python = ">=3.10"
-dependencies = [
-    "grobid-client-python (>=0.1.4,<0.2.0)",
-    "wordcloud (>=1.9.6,<2.0.0)",
-    "matplotlib (>=3.10.8,<4.0.0)"
-]
 
+[tool.poetry.dependencies]
+python = "^3.10"
+grobid-client-python = ">=0.1.4,<0.2.0"
+wordcloud = ">=1.9.6,<2.0.0"
+matplotlib = ">=3.10.8,<4.0.0"
+
+[[tool.poetry.packages]]
+include = "src"
+
+[tool.poetry.scripts]
+openscience = "src.main:main"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

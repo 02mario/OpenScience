@@ -1,4 +1,3 @@
-import sys
 import os
 import unittest
 
@@ -6,8 +5,6 @@ import unittest
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 from src.utils import (
     draw_keyword_cloud,

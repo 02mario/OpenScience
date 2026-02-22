@@ -1,13 +1,13 @@
 import argparse
-import grobid
-import utils
+from .grobid import process_dataset
+from .utils import create_figures
 import os
 
 def main():
     parser = argparse.ArgumentParser(description="Tool for processing papers with GROBID and visualizing results.")
     parser.add_argument('--dataset', type=str, default="dataset", help="Dataset directory path.")
-    parser.add_argument('--output', type=str, default=None, help="Output directory for results or figures.")
-    parser.add_argument('--hide', default=True, action='store_true', help="Hide figures after processing.")
+    parser.add_argument('--output', type=str, default="output", help="Output directory for results or figures.")
+    parser.add_argument('--show', default=False, action='store_true', help="Show figures after processing.")
     args = parser.parse_args()
 
     # Set workdir as the parent directory of the directory containing this file
@@ -16,20 +16,18 @@ def main():
 
     # Resolve dataset and output paths relative to workdir if not absolute
     dataset_path = args.dataset if os.path.isabs(args.dataset) else os.path.join(workdir, args.dataset)
-    output_path = None
-
-    if args.output:
-        output_path = args.output if os.path.isabs(args.output) else os.path.join(workdir, args.output)
-        os.makedirs(output_path, exist_ok=True)
+    output_path = args.output if os.path.isabs(args.output) else os.path.join(workdir, args.output)
 
     if not os.path.exists(dataset_path):
         os.makedirs(dataset_path, exist_ok=True)
+    if not os.path.exists(output_path):
+        os.makedirs(output_path, exist_ok=True)
 
-    if not args.hide or output_path:
-        results = grobid.process_dataset(dataset_path)
-        figs = utils.create_figures(results, show=not args.hide, output_dir=output_path)
+    if args.show or output_path:
+        results = process_dataset(dataset_path)
+        figs = create_figures(results, show=args.show, output_dir=output_path)
     else:
-        print("Warning: No output selected. Omit --hide or use --output to save them.")
+        print("Warning: No output selected. Omit --show or use --output to save them.")
 
 if __name__ == "__main__":
     main()

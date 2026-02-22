@@ -1,6 +1,7 @@
 from grobid_client.grobid_client import GrobidClient
 import xml.etree.ElementTree as ET
 from pathlib import Path
+import sys
 
 def process_pdf_with_grobid(pdf_path, client: GrobidClient):
     """
@@ -97,8 +98,12 @@ def process_dataset(dataset_dir):
         List of dictionaries with paper information
     """
 
-    
-    client = GrobidClient()
+    try:
+        client = GrobidClient()
+    except Exception as e:
+        print(f"Error initializing GROBID client: {str(e)}")
+        sys.exit(1)
+        
     dataset_path = Path(dataset_dir)
     pdf_files = list(dataset_path.glob("*.pdf"))
     
