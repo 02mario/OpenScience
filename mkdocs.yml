@@ -1,0 +1,14 @@
+site_name: OpenScience Documentation
+nav:
+  - Home: index.md
+  - Pyproject: pyprojecttoml.md
+
+theme:
+  name: material
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
