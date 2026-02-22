@@ -4,7 +4,7 @@ nav:
   - Pyproject: pyprojecttoml.md
 
 theme:
-  name: material
+  name: mkdocs
 
 markdown_extensions:
   - admonition
