@@ -1,0 +1,13 @@
+services:
+  grobid:
+    image: lfoppiano/grobid:0.8.1
+    ports:
+      - "8070:8070"
+
+  openscience:
+    build: .
+    depends_on:
+      - grobid
+    volumes:
+      - ./dataset:/app/dataset
+      - ./output:/app/output
