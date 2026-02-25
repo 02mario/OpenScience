@@ -17,7 +17,8 @@ This program allows to extract info from the papers and create some visualizatio
 - Python >=3.10
 - Poetry >=2.0.0
     - `https://python-poetry.org/docs/#installation`
-- A running GROBID service instance
+- Docker
+- A GROBID service instance
     - `docker run -t --rm -p 8070:8070 lfoppiano/grobid:0.8.2`
 
 ## Installation Instructions
@@ -29,6 +30,25 @@ poetry install
 ```
 
 ## Execution Instructions
+There are two ways to run the application installing locally with poetry or using Docker, both ways require Docker installed. 
+
+**Notice that running with Docker doesn't allow to specify custom dataset or output directories nor to show the figures.**
+
+### Execution with Docker
+To run the application with Docker, first put your PDF files in the `dataset/` directory, then run:
+```sh
+docker compose up
+```
+
+The application will save the figures in the `output/` directory by default.
+
+When finished, you can stop the application with:
+```sh
+docker compose down
+```
+
+### Execution with Poetry
+
 First, make sure you have GROBID locally running andthe necessary files in PDF format in the `dataset/` directory.
 The application will save the figures in the `output/` directory by default.
 
