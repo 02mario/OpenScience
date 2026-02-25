@@ -37,7 +37,7 @@ There are two ways to run the application installing locally with poetry or usin
 ### Execution with Docker
 To run the application with Docker, first put your PDF files in the `dataset/` directory, then run:
 ```sh
-docker compose up
+docker compose up -d
 ```
 
 The application will save the figures in the `output/` directory by default.
@@ -70,6 +70,11 @@ poetry run openscience --dataset my_dataset
 You can choose to show the figures in addition to saving them:
 ```sh
 poetry run openscience --show
+```
+
+You can specify the URL of the GROBID service:
+```sh
+poetry run openscience --grobid_url http://localhost:8070
 ```
 
 ### Test execution

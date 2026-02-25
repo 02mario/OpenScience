@@ -86,20 +86,20 @@ def extract_paper_info(xml_content):
     }
 
 
-def process_dataset(dataset_dir):
+def process_dataset(dataset_dir, grobid_url):
     """
     Process all PDFs in a dataset directory with GROBID.
     
     Args:
         dataset_dir: Directory containing PDF files
-        grobid_config: Dictionary with GROBID configuration (optional)
+        grobid_url: URL of the GROBID service
     
     Returns:
         List of dictionaries with paper information
     """
 
     try:
-        client = GrobidClient()
+        client = GrobidClient(url=grobid_url)
     except Exception as e:
         print(f"Error initializing GROBID client: {str(e)}")
         sys.exit(1)

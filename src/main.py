@@ -1,6 +1,6 @@
 import argparse
-from .grobid import process_dataset
-from .utils import create_figures
+from src.grobid import process_dataset
+from src.utils import create_figures
 import os
 
 def main():
@@ -8,6 +8,7 @@ def main():
     parser.add_argument('--dataset', type=str, default="dataset", help="Dataset directory path.")
     parser.add_argument('--output', type=str, default="output", help="Output directory for results or figures.")
     parser.add_argument('--show', default=False, action='store_true', help="Show figures after processing.")
+    parser.add_argument('--grobid_url', type=str, default="http://localhost:8070", help="URL of the GROBID service.")
     args = parser.parse_args()
 
     # Set workdir as the parent directory of the directory containing this file
@@ -24,7 +25,7 @@ def main():
         os.makedirs(output_path, exist_ok=True)
 
     if args.show or output_path:
-        results = process_dataset(dataset_path)
+        results = process_dataset(dataset_path, grobid_url=args.grobid_url)
         figs = create_figures(results, show=args.show, output_dir=output_path)
     else:
         print("Warning: No output selected. Omit --show or use --output to save them.")

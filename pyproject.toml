@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "Python project to perform arxiv papers analysis with grobid for Open Science course."
 authors = ["Mario"]
 license = "CC0-1.0"
-readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
