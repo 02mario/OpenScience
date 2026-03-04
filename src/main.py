@@ -26,7 +26,8 @@ def main():
 
     if args.show or output_path:
         results = process_dataset(dataset_path, grobid_url=args.grobid_url)
-        figs = create_figures(results, show=args.show, output_dir=output_path)
+        if figs:
+            figs = create_figures(results, show=args.show, output_dir=output_path)
     else:
         print("Warning: No output selected. Omit --show or use --output to save them.")
 

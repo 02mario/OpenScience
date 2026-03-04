@@ -1,3 +1,5 @@
+import time
+
 from grobid_client.grobid_client import GrobidClient
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -99,7 +101,9 @@ def process_dataset(dataset_dir, grobid_url):
     """
 
     try:
-        client = GrobidClient(url=grobid_url)
+        if grobid_url != "http://localhost:8070":
+            time.sleep(30) # Wait for GROBID to be ready
+        client = GrobidClient(grobid_server=grobid_url)
     except Exception as e:
         print(f"Error initializing GROBID client: {str(e)}")
         sys.exit(1)
