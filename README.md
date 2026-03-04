@@ -26,7 +26,6 @@ Clone the repository and install dependencies:
 ```sh
 git clone https://github.com/02mario/OpenScience.git
 cd OpenScience
-poetry install
 ```
 
 ## Execution Instructions
@@ -51,6 +50,11 @@ docker compose down
 
 First, make sure you have GROBID locally running andthe necessary files in PDF format in the `dataset/` directory.
 The application will save the figures in the `output/` directory by default.
+
+Install the dependencies with poetry:
+```sh
+poetry install
+```
 
 To run the application:
 ```sh
