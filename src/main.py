@@ -26,8 +26,10 @@ def main():
 
     if args.show or output_path:
         results = process_dataset(dataset_path, grobid_url=args.grobid_url)
-        if figs:
+        if results:
             figs = create_figures(results, show=args.show, output_dir=output_path)
+        else:
+            print("No PDF files to process.")
     else:
         print("Warning: No output selected. Omit --show or use --output to save them.")
 
