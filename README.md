@@ -33,16 +33,23 @@ There are two ways to run the application installing locally with poetry or usin
 **Notice that running with Docker doesn't allow to specify custom dataset or output directories nor to show the figures.**
 
 ### Execution with Docker
-To run the application with Docker, first put your PDF files in the `dataset/` directory, then run:
+To run the application with Docker, first put your PDF files (.pdf extension needed) in the `dataset/` directory, then run:
+Omit `-d` to see the execution and logs of the app.
 ```sh
 docker compose up -d
 ```
 
+The process may take 1-2 minutes depending on the number of files. 
 The application will save the figures in the `output/` directory by default.
 
 When finished, you can stop the application with:
 ```sh
 docker compose down
+```
+
+You can delete the docker image if you are not going to use it anymore with:
+```sh
+docker rmi openscience-openscience:latest
 ```
 
 ### Execution with Poetry
