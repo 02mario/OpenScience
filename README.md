@@ -1,8 +1,7 @@
 # OpenScience
 Repository for Open Science and Artificial Intelligence
 
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18723896.svg)](https://doi.org/10.5281/zenodo.18723896)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18875351.svg)](https://doi.org/10.5281/zenodo.18875351)
 
 ## Description
 This is a project to perform papers analysis with grobid.
