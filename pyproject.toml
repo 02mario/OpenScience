@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "openscience"
-version = "0.1.0"
+version = "1.0.0"
 description = "Python project to perform arxiv papers analysis with grobid for Open Science course."
 authors = ["Mario"]
 license = "CC0-1.0"

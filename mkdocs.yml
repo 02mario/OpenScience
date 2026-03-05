@@ -1,7 +1,6 @@
 site_name: OpenScience Documentation
 nav:
   - Home: index.md
-  - Pyproject: pyprojecttoml.md
 
 theme:
   name: mkdocs
