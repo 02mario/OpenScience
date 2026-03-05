@@ -3,7 +3,7 @@ Repository for Open Science and Artificial Intelligence
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18875351.svg)](https://doi.org/10.5281/zenodo.18875351)
 
-[![Documentation](https://readthedocs.org/projects/open-science-paper-analysis/badge/?version=latest)](https://open-science-paper-analysis.readthedocs.io/en/latest/?badge=latest)
+[![Documentation](https://readthedocs.org/projects/open-science-paper-analysis/badge/?version=latest)](https://open-science-paper-analysis.readthedocs.io/en/latest/)
 
 ## Description
 This is a project to perform papers analysis with grobid.
