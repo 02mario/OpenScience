@@ -90,6 +90,10 @@ poetry run openscience --grobid_url http://localhost:8070
 ```
 
 ### Test execution
+
+The tests verify that the information is correctly extracted from a TEI and that the figures contain the correct information.
+The application has also been tested with some files to verify full functionality with Grobid.
+
 To run unit tests:
 ```sh
 poetry run python -m unittest discover -s tests -p "test_*.py"
