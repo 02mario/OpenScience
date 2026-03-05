@@ -1,8 +1,7 @@
 # OpenScience
 Repository for Open Science and Artificial Intelligence
 
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18723896.svg)](https://doi.org/10.5281/zenodo.18723896)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18875351.svg)](https://doi.org/10.5281/zenodo.18875351)
 
 ## Description
 This is a project to perform papers analysis with grobid.
@@ -17,7 +16,8 @@ This program allows to extract info from the papers and create some visualizatio
 - Python >=3.10
 - Poetry >=2.0.0
     - `https://python-poetry.org/docs/#installation`
-- A running GROBID service instance
+- Docker
+- A GROBID service instance
     - `docker run -t --rm -p 8070:8070 lfoppiano/grobid:0.8.2`
 
 ## Installation Instructions
@@ -25,12 +25,42 @@ Clone the repository and install dependencies:
 ```sh
 git clone https://github.com/02mario/OpenScience.git
 cd OpenScience
-poetry install
 ```
 
 ## Execution Instructions
+There are two ways to run the application installing locally with poetry or using Docker, both ways require Docker installed. 
+
+**Notice that running with Docker doesn't allow to specify custom dataset or output directories nor to show the figures.**
+
+### Execution with Docker
+To run the application with Docker, first put your PDF files (.pdf extension needed) in the `dataset/` directory, then run:
+Omit `-d` to see the execution and logs of the app.
+```sh
+docker compose up -d
+```
+
+The process may take 1-2 minutes depending on the number of files. 
+The application will save the figures in the `output/` directory by default.
+
+When finished, you can stop the application with:
+```sh
+docker compose down
+```
+
+You can delete the docker image if you are not going to use it anymore with:
+```sh
+docker rmi openscience-openscience:latest
+```
+
+### Execution with Poetry
+
 First, make sure you have GROBID locally running andthe necessary files in PDF format in the `dataset/` directory.
 The application will save the figures in the `output/` directory by default.
+
+Install the dependencies with poetry:
+```sh
+poetry install
+```
 
 To run the application:
 ```sh
@@ -52,6 +82,11 @@ You can choose to show the figures in addition to saving them:
 poetry run openscience --show
 ```
 
+You can specify the URL of the GROBID service:
+```sh
+poetry run openscience --grobid_url http://localhost:8070
+```
+
 ### Test execution
 To run unit tests:
 ```sh
@@ -67,7 +102,7 @@ poetry run openscience --dataset my_papers --output results
 
 ## Preferred Citation
 If you use this project, please cite:
-> Mario, J. G. (2026). Python program for paper analysis with grobid. (Version 0.1.0) [Computer software]. https://github.com/02mario/OpenScience
+> Mario, J. G. (2026). Python program for paper analysis with grobid. (Version 1.0.0) [Computer software]. https://github.com/02mario/OpenScience
 
 ## Where to Get Help
 https://github.com/02mario/OpenScience/issues

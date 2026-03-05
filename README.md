@@ -3,6 +3,8 @@ Repository for Open Science and Artificial Intelligence
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18875351.svg)](https://doi.org/10.5281/zenodo.18875351)
 
+[![Documentation](https://readthedocs.org/projects/open-science-paper-analysis/badge/?version=latest)](https://open-science-paper-analysis.readthedocs.io/en/latest/?badge=latest)
+
 ## Description
 This is a project to perform papers analysis with grobid.
 This program allows to extract info from the papers and create some visualizations to analyze the results.
@@ -102,7 +104,7 @@ poetry run openscience --dataset my_papers --output results
 
 ## Preferred Citation
 If you use this project, please cite:
-> Mario, J. G. (2026). Python program for paper analysis with grobid. (Version 0.1.0) [Computer software]. https://github.com/02mario/OpenScience
+> Mario, J. G. (2026). Python program for paper analysis with grobid. (Version 1.0.0) [Computer software]. https://github.com/02mario/OpenScience
 
 ## Where to Get Help
 https://github.com/02mario/OpenScience/issues
